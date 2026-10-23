@@ -1,0 +1,5 @@
+B Nazanin — (c) 2000 Borna Rayaneh ("Parsa 2001® - Borna Rayaneh®").
+Converted to WOFF2 from the TTF files installed on the developer machine.
+The font's OS/2 fsType is 0 (installable embedding). B Nazanin is distributed
+as freeware but is not released under an open-source licence: confirm the
+terms with the copyright holder before deploying publicly.

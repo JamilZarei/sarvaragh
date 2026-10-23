@@ -1,0 +1,40 @@
+import {
+  BookOpenText,
+  Brain,
+  BriefcaseBusiness,
+  CodeXml,
+  Feather,
+  Fingerprint,
+  FlaskConical,
+  Hourglass,
+  Landmark,
+  PenLine,
+  Rocket,
+  Smile,
+  Sprout,
+  TrendingUp,
+  UserRound,
+  WandSparkles,
+  type LucideIcon,
+} from "lucide-react";
+
+import type { SubjectKey } from "@/lib/constants";
+
+export const SUBJECT_ICONS: Record<SubjectKey, LucideIcon> = {
+  literature: Feather,
+  fiction: BookOpenText,
+  philosophy: Landmark,
+  psychology: Brain,
+  history: Hourglass,
+  science: FlaskConical,
+  business: BriefcaseBusiness,
+  programming: CodeXml,
+  poetry: PenLine,
+  biography: UserRound,
+  children: Smile,
+  fantasy: WandSparkles,
+  scifi: Rocket,
+  mystery: Fingerprint,
+  selfhelp: Sprout,
+  economics: TrendingUp,
+};

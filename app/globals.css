@@ -1,26 +1,457 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Hover effects on every device. With a mouse, `hover:` works as usual. On touch
+ * screens (where Tailwind's default `hover:` never applies) the same styles show
+ * while an element is pressed, and while a card marked `data-touch-hover-target`
+ * passes through the middle of the screen (components/motion/touch-hover.tsx
+ * sets `data-touch-hover`). `group-hover:` follows, since it is built on `hover`.
+ */
+@custom-variant hover {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+  @media (hover: none) {
+    &:active,
+    &[data-touch-hover] {
+      @slot;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* KetabGard design tokens                                                    */
+/* Editorial palette: cream paper, charcoal ink, deep green accent,           */
+/* muted gold and a controlled crimson for "favorite".                        */
+/* -------------------------------------------------------------------------- */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f6f0;
+  --foreground: #252722;
+  --card: #ffffff;
+  --card-foreground: #252722;
+  --popover: #ffffff;
+  --popover-foreground: #252722;
+  --primary: #285c49;
+  --primary-foreground: #f8f6f0;
+  --secondary: #efebe1;
+  --secondary-foreground: #252722;
+  --muted: #f0ede5;
+  --muted-foreground: #66655c;
+  --accent: #e6eee9;
+  --accent-foreground: #1d4537;
+  --destructive: #b3261e;
+  --border: #e5e0d4;
+  --input: #dcd6c8;
+  --ring: #285c49;
+  --radius: 0.75rem;
+
+  --gold: #a9834a;
+  --heart: #a3303d;
+  --hero: #1b201d;
+  --hero-foreground: #f3efe4;
+  --hero-muted: #b9b4a5;
+  --cover-placeholder: #e9e4d6;
+
+  --shadow-card: 0 1px 2px rgb(37 39 34 / 0.04), 0 1px 3px rgb(37 39 34 / 0.04);
+  --shadow-card-hover: 0 2px 4px rgb(37 39 34 / 0.04), 0 14px 28px -12px rgb(37 39 34 / 0.22);
+  --shadow-book: 0 1px 2px rgb(20 20 18 / 0.1), 0 10px 24px -10px rgb(20 20 18 / 0.35);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* shadcn chart & sidebar tokens (kept for component compatibility) */
+  --chart-1: #285c49;
+  --chart-2: #a9834a;
+  --chart-3: #a3303d;
+  --chart-4: #66655c;
+  --chart-5: #1d4537;
+  --sidebar: #f3f0e8;
+  --sidebar-foreground: #252722;
+  --sidebar-primary: #285c49;
+  --sidebar-primary-foreground: #f8f6f0;
+  --sidebar-accent: #e6eee9;
+  --sidebar-accent-foreground: #1d4537;
+  --sidebar-border: #e5e0d4;
+  --sidebar-ring: #285c49;
+}
+
+.dark {
+  --background: #131512;
+  --foreground: #ebe7dc;
+  --card: #1b1e1a;
+  --card-foreground: #ebe7dc;
+  --popover: #1d201c;
+  --popover-foreground: #ebe7dc;
+  --primary: #7cbfa0;
+  --primary-foreground: #0f1b15;
+  --secondary: #252923;
+  --secondary-foreground: #ebe7dc;
+  --muted: #22261f;
+  --muted-foreground: #a8a497;
+  --accent: #1f3229;
+  --accent-foreground: #cde6d9;
+  --destructive: #f2867c;
+  --border: #2d312b;
+  --input: #383d35;
+  --ring: #7cbfa0;
+
+  --gold: #d1af78;
+  --heart: #ec7d89;
+  --hero: #0e110f;
+  --hero-foreground: #f1ede2;
+  --hero-muted: #a9a596;
+  --cover-placeholder: #262a24;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-card-hover: 0 2px 4px rgb(0 0 0 / 0.3), 0 16px 32px -14px rgb(0 0 0 / 0.7);
+  --shadow-book: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 26px -10px rgb(0 0 0 / 0.75);
+
+  --chart-1: #7cbfa0;
+  --chart-2: #d1af78;
+  --chart-3: #ec7d89;
+  --chart-4: #a8a497;
+  --chart-5: #cde6d9;
+  --sidebar: #181b17;
+  --sidebar-foreground: #ebe7dc;
+  --sidebar-primary: #7cbfa0;
+  --sidebar-primary-foreground: #0f1b15;
+  --sidebar-accent: #1f3229;
+  --sidebar-accent-foreground: #cde6d9;
+  --sidebar-border: #2d312b;
+  --sidebar-ring: #7cbfa0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* B Nazanin is limited to Arabic-script code points (unicode-range in app/layout.tsx),
+     so Latin text falls through to Vazirmatn Latin / Newsreader. */
+  --font-sans: var(--font-nazanin), var(--font-vazirmatn-latin), var(--font-vazirmatn), Tahoma, system-ui, sans-serif;
+  --font-serif: var(--font-nazanin), var(--font-newsreader), var(--font-vazirmatn), Georgia, serif;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-gold: var(--gold);
+  --color-heart: var(--heart);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+  --color-cover-placeholder: var(--cover-placeholder);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-book: var(--shadow-book);
+  --ease-out-soft: var(--ease-out-soft);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* -------------------------------------------------------------------------- */
+/* Motion                                                                     */
+/* -------------------------------------------------------------------------- */
+
+@theme {
+  --animate-fade-up: kg-fade-up 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: kg-fade-in 280ms ease-out both;
+  --animate-heart-pop: kg-heart-pop 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-marquee-up: kg-marquee-y 48s linear infinite;
+  --animate-marquee-down: kg-marquee-y 56s linear infinite reverse;
+  --animate-marquee-x: kg-marquee-x 60s linear infinite;
+  --animate-shimmer: kg-shimmer 1.6s ease-in-out infinite;
+  --animate-burst: kg-burst 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: kg-float 6s ease-in-out infinite;
+
+  @keyframes kg-marquee-y {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes kg-marquee-x {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(50%);
+    }
+  }
+
+  @keyframes kg-shimmer {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes kg-burst {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0.4);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1);
+    }
+  }
+
+  @keyframes kg-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes kg-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes kg-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes kg-heart-pop {
+    0% {
+      transform: scale(1);
+    }
+    45% {
+      transform: scale(1.28);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--foreground) 18%, transparent) transparent;
+}
+
+/* Scroll reveal (components/motion/reveal.tsx). Only content that starts below the
+   fold is hidden, and only after hydration, so nothing flashes or stays hidden without JS. */
+[data-reveal] {
+  transition:
+    opacity 650ms var(--ease-out-soft),
+    transform 650ms var(--ease-out-soft);
+}
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+/* Glossy light sweep over a book cover on hover. */
+.cover-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.28) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease-out-soft);
+}
+@media (hover: hover) {
+  .shine-host:hover .cover-shine::after {
+    transform: translateX(120%);
+  }
+}
+@media (hover: none) {
+  .shine-host:active .cover-shine::after,
+  .shine-host[data-touch-hover] .cover-shine::after {
+    transform: translateX(120%);
+  }
+}
+
+/* Infinite marquees pause while hovered so covers can be clicked comfortably. */
+.marquee:hover > * {
+  animation-play-state: paused;
+}
+
+/* View transitions: cover morph between card and book page, soft page cross-fade. */
+::view-transition-group(.morph) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: kg-via-blur;
+}
+@keyframes kg-via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+::view-transition-old(.page) {
+  animation: 140ms ease-in both kg-vt-out;
+}
+::view-transition-new(.page) {
+  animation: 300ms 60ms cubic-bezier(0.22, 1, 0.36, 1) both kg-vt-in;
+}
+@keyframes kg-vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes kg-vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Short, controlled colour cross-fade while switching themes (see ThemeToggle). */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
+  transition-duration: 260ms !important;
+  transition-timing-function: ease-out !important;
+  transition-delay: 0ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  [data-reveal="pending"] {
+    opacity: 1;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01";
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 22%, transparent);
+  }
+  /* Latin book titles inside Persian text keep their own direction. */
+  [lang="en"] {
+    unicode-bidi: isolate;
+  }
+  /*
+   * Multi-line Persian paragraphs are justified like a word processor: every line but
+   * the last fills the measure. One-line and line-clamped text looks the same;
+   * paragraphs that set their own alignment (text-center, …) keep it, because
+   * utilities win over this base layer.
+   */
+  p,
+  blockquote,
+  figcaption {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  /* Latin text (quotes, original descriptions) keeps ragged lines: justifying long
+     English words on a narrow screen opens wide gaps. Marked explicitly, because
+     the CSS compiler lowers :dir() to a check of the page language (always fa).
+     Declared before the rule below so a centred container still wins. */
+  :is(p, blockquote, figcaption):is([dir="ltr"], [lang="en"], [lang="fr"]) {
+    text-align: start;
+  }
+  /* Inside a container that sets its own alignment (empty states, 404, …), follow it. */
+  :is([class*="text-center"], [class*="text-end"], [class*="text-start"], [class*="text-left"], [class*="text-right"])
+    :is(p, blockquote, figcaption) {
+    text-align: inherit;
+  }
 }
