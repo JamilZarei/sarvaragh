@@ -193,7 +193,7 @@ export function DiscoverView() {
               <List />
             </ToggleGroupItem>
           </ToggleGroup>
-          <ShareMenu title="جستجو در کتاب‌گرد" />
+          <ShareMenu title="جستجو در سرورق" />
         </div>
 
         <div className="mt-4 space-y-3">

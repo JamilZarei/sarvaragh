@@ -7,7 +7,7 @@ import type { ApiErrorCode, Result } from "@/types/book";
  * lib/open-library.ts).
  */
 
-const USER_AGENT = "KetabGard/0.1 (book discovery; educational project)";
+const USER_AGENT = "Sarvaragh/0.1 (book discovery; educational project)";
 const TIMEOUT_MS = 12_000;
 
 /* ------------------------------------------------------------------------ */

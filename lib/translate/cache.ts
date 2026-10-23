@@ -6,7 +6,7 @@ import path from "node:path";
  *
  * Machine translation is slow and the free MyMemory quota is small, so every
  * result is kept in memory and, where the filesystem is writable (local dev,
- * self-hosting), persisted to `node_modules/.cache/ketabgard/translations.json`
+ * self-hosting), persisted to `node_modules/.cache/sarvaragh/translations.json`
  * across restarts. That folder is ignored by the dev file watcher; writing
  * inside the project tree would trigger endless dev reloads. Override with
  * TRANSLATION_CACHE_FILE. On read-only hosts persistence silently becomes a no-op.
@@ -15,7 +15,7 @@ import path from "node:path";
 const MAX_ENTRIES = 20_000;
 const FILE =
   process.env.TRANSLATION_CACHE_FILE ??
-  path.join(process.cwd(), "node_modules", ".cache", "ketabgard", "translations.json");
+  path.join(process.cwd(), "node_modules", ".cache", "sarvaragh", "translations.json");
 
 let store: Map<string, string> | null = null;
 let saveTimer: NodeJS.Timeout | null = null;

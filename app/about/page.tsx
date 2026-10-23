@@ -11,7 +11,7 @@ const CONTACT_EMAIL = "jamilzarei@gmail.com";
 
 export const metadata: Metadata = {
   title: "درباره",
-  description: "کتاب‌گرد چیست، داده‌هایش از کجا می‌آید و چطور می‌شود با سازنده‌اش در تماس بود.",
+  description: "سرورق چیست، داده‌هایش از کجا می‌آید و چطور می‌شود با سازنده‌اش در تماس بود.",
 };
 
 export default function AboutPage() {
@@ -25,7 +25,7 @@ export default function AboutPage() {
           </p>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">درباره {SITE_NAME}</h1>
           <p className="mt-3 text-base leading-8 text-muted-foreground sm:text-lg">
-            کتاب‌گرد یک کتابخانه دیجیتال فارسی برای کشف و مرور کتاب‌هاست؛ جایی برای پیدا کردن کتاب بعدی‌ات.
+            سرورق یک کتابخانه دیجیتال فارسی برای کشف و مرور کتاب‌هاست؛ جایی برای پیدا کردن کتاب بعدی‌ات.
           </p>
         </header>
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 (Internet Archive)
               </span>{" "}
               دریافت می‌شود و جلدهایی که آنجا نیستند از <span dir="ltr">Google Books</span>. ترجمه‌های فارسی خودکارند و ممکن است با
-              نام نسخه منتشرشده فارسی فرق کنند. کتاب‌گرد فروشگاه نیست و خرید، فروش یا مطالعه آنلاین در آن انجام نمی‌شود.
+              نام نسخه منتشرشده فارسی فرق کنند. سرورق فروشگاه نیست و خرید، فروش یا مطالعه آنلاین در آن انجام نمی‌شود.
             </p>
           </section>
 

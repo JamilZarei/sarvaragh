@@ -1,8 +1,8 @@
-export const SITE_NAME = "کتاب‌گرد";
-export const SITE_NAME_EN = "KetabGard";
+export const SITE_NAME = "سرورق";
+export const SITE_NAME_EN = "Sarvaragh";
 export const SITE_TAGLINE = "کتاب بعدی‌ات را کشف کن.";
 export const SITE_DESCRIPTION =
-  "کتابخانه دیجیتال کتاب‌گرد؛ جستجو، کشف و ذخیره کتاب‌ها با داده‌های باز Open Library.";
+  "کتابخانه دیجیتال سرورق؛ جستجو، کشف و ذخیره کتاب‌ها با داده‌های باز Open Library.";
 
 export const OPEN_LIBRARY_URL = "https://openlibrary.org";
 export const OPEN_LIBRARY_DOCS_URL = "https://openlibrary.org/developers/api";

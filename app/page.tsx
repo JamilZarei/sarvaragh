@@ -22,7 +22,7 @@ export default function HomePage() {
         <section aria-labelledby="shelves-title" className="container-page mt-16 sm:mt-24">
           <SectionHeading
             id="shelves-title"
-            eyebrow="ویترین کتاب‌گرد"
+            eyebrow="ویترین سرورق"
             title="کتاب‌هایی که همه درباره‌شان حرف می‌زنند"
             description="فهرست‌ها بر اساس داده‌های واقعی خوانندگان و امتیازهای Open Library ساخته شده‌اند."
             action={

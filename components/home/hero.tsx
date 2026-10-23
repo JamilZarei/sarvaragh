@@ -38,7 +38,7 @@ export function Hero() {
               style={stagger(0)}
             >
               <Sparkles className="size-3.5 text-gold" aria-hidden="true" />
-              کتابخانه دیجیتال کتاب‌گرد
+              کتابخانه دیجیتال سرورق
             </p>
             <h1
               id="hero-title"

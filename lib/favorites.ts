@@ -2,7 +2,7 @@ import { sortBooks } from "@/lib/books";
 import { isValidWorkId } from "@/lib/open-library";
 import type { BookSummary, FavoriteBook } from "@/types/book";
 
-export const FAVORITES_STORAGE_KEY = "ketabgard:favorites:v1";
+export const FAVORITES_STORAGE_KEY = "sarvaragh:favorites:v1";
 export const MAX_FAVORITES = 500;
 
 function isFavoriteBook(value: unknown): value is FavoriteBook {

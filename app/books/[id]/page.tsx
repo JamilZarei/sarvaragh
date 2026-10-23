@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps<"/books/[id]">): Pr
   const authors = book.authors.map((a) => a.nameFa || a.name).join("، ");
   const title = displayTitle(book);
   const year = book.firstPublishYear ? `، نخستین انتشار ${new Intl.NumberFormat("fa-IR", { useGrouping: false }).format(book.firstPublishYear)}` : "";
-  const description = `«${title}»${authors ? ` نوشته ${authors}` : ""}${year} — معرفی، امتیاز خوانندگان و کتاب‌های مشابه در کتاب‌گرد.`;
+  const description = `«${title}»${authors ? ` نوشته ${authors}` : ""}${year} — معرفی، امتیاز خوانندگان و کتاب‌های مشابه در سرورق.`;
   const image = coverUrl(book.coverId, "L");
 
   return {

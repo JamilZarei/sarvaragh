@@ -39,7 +39,7 @@ export function MobileNav() {
       <SheetContent side="right" className="w-[85%] max-w-xs gap-0 overflow-y-auto">
         <SheetHeader className="border-b pb-4">
           <SheetTitle className="sr-only">منوی اصلی</SheetTitle>
-          <SheetDescription className="sr-only">پیمایش بین بخش‌های کتاب‌گرد</SheetDescription>
+          <SheetDescription className="sr-only">پیمایش بین بخش‌های سرورق</SheetDescription>
           <Logo className="self-start" />
         </SheetHeader>
         <nav aria-label="منوی موبایل" className="flex flex-col gap-1 p-3">

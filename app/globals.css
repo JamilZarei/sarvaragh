@@ -26,7 +26,7 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* KetabGard design tokens                                                    */
+/* Sarvaragh design tokens                                                    */
 /* Editorial palette: cream paper, charcoal ink, deep green accent,           */
 /* muted gold and a controlled crimson for "favorite".                        */
 /* -------------------------------------------------------------------------- */
@@ -188,17 +188,17 @@
 /* -------------------------------------------------------------------------- */
 
 @theme {
-  --animate-fade-up: kg-fade-up 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-fade-in: kg-fade-in 280ms ease-out both;
-  --animate-heart-pop: kg-heart-pop 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  --animate-marquee-up: kg-marquee-y 48s linear infinite;
-  --animate-marquee-down: kg-marquee-y 56s linear infinite reverse;
-  --animate-marquee-x: kg-marquee-x 60s linear infinite;
-  --animate-shimmer: kg-shimmer 1.6s ease-in-out infinite;
-  --animate-burst: kg-burst 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-float: kg-float 6s ease-in-out infinite;
+  --animate-fade-up: sv-fade-up 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: sv-fade-in 280ms ease-out both;
+  --animate-heart-pop: sv-heart-pop 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-marquee-up: sv-marquee-y 48s linear infinite;
+  --animate-marquee-down: sv-marquee-y 56s linear infinite reverse;
+  --animate-marquee-x: sv-marquee-x 60s linear infinite;
+  --animate-shimmer: sv-shimmer 1.6s ease-in-out infinite;
+  --animate-burst: sv-burst 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: sv-float 6s ease-in-out infinite;
 
-  @keyframes kg-marquee-y {
+  @keyframes sv-marquee-y {
     from {
       transform: translateY(0);
     }
@@ -207,7 +207,7 @@
     }
   }
 
-  @keyframes kg-marquee-x {
+  @keyframes sv-marquee-x {
     from {
       transform: translateX(0);
     }
@@ -216,7 +216,7 @@
     }
   }
 
-  @keyframes kg-shimmer {
+  @keyframes sv-shimmer {
     from {
       transform: translateX(100%);
     }
@@ -225,7 +225,7 @@
     }
   }
 
-  @keyframes kg-burst {
+  @keyframes sv-burst {
     0% {
       opacity: 1;
       transform: translate(-50%, -50%) scale(0.4);
@@ -236,7 +236,7 @@
     }
   }
 
-  @keyframes kg-float {
+  @keyframes sv-float {
     0%,
     100% {
       transform: translateY(0);
@@ -246,7 +246,7 @@
     }
   }
 
-  @keyframes kg-fade-up {
+  @keyframes sv-fade-up {
     from {
       opacity: 0;
       transform: translateY(8px);
@@ -257,7 +257,7 @@
     }
   }
 
-  @keyframes kg-fade-in {
+  @keyframes sv-fade-in {
     from {
       opacity: 0;
     }
@@ -266,7 +266,7 @@
     }
   }
 
-  @keyframes kg-heart-pop {
+  @keyframes sv-heart-pop {
     0% {
       transform: scale(1);
     }
@@ -343,25 +343,25 @@
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 ::view-transition-image-pair(.morph) {
-  animation-name: kg-via-blur;
+  animation-name: sv-via-blur;
 }
-@keyframes kg-via-blur {
+@keyframes sv-via-blur {
   30% {
     filter: blur(3px);
   }
 }
 ::view-transition-old(.page) {
-  animation: 140ms ease-in both kg-vt-out;
+  animation: 140ms ease-in both sv-vt-out;
 }
 ::view-transition-new(.page) {
-  animation: 300ms 60ms cubic-bezier(0.22, 1, 0.36, 1) both kg-vt-in;
+  animation: 300ms 60ms cubic-bezier(0.22, 1, 0.36, 1) both sv-vt-in;
 }
-@keyframes kg-vt-out {
+@keyframes sv-vt-out {
   to {
     opacity: 0;
   }
 }
-@keyframes kg-vt-in {
+@keyframes sv-vt-in {
   from {
     opacity: 0;
     transform: translateY(10px);

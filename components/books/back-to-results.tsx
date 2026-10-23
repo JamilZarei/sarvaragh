@@ -6,7 +6,7 @@ import { useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
 
-export const LAST_SEARCH_KEY = "ketabgard:last-search";
+export const LAST_SEARCH_KEY = "sarvaragh:last-search";
 
 /** Remembers the last discover URL (search + filters) for "back to results". */
 export function rememberLastSearch(search: string) {

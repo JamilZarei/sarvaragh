@@ -30,7 +30,7 @@ export type CoverSize = "M" | "L";
 /** A cover, or why there is none: "missing" is a definite answer, "unreachable" may change. */
 export type CoverLookup = CoverImage | "missing" | "unreachable";
 
-const USER_AGENT = "KetabGard/0.1 (book discovery; educational project)";
+const USER_AGENT = "Sarvaragh/0.1 (book discovery; educational project)";
 const OPEN_LIBRARY_TIMEOUT_MS = 8000;
 const MIRROR_TIMEOUT_MS = 12000;
 const GOOGLE_TIMEOUT_MS = 6000;

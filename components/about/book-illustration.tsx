@@ -65,22 +65,22 @@ export function BookIllustration({ className }: { className?: string }) {
       className={cn("h-auto w-full", className)}
     >
       <defs>
-        <radialGradient id="kg-glow" cx="50%" cy="88%" r="60%">
+        <radialGradient id="sv-glow" cx="50%" cy="88%" r="60%">
           <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.28" />
           <stop offset="55%" stopColor="var(--primary)" stopOpacity="0.07" />
           <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="kg-ribbon" x1="0" y1="330" x2="0" y2="30" gradientUnits="userSpaceOnUse">
+        <linearGradient id="sv-ribbon" x1="0" y1="330" x2="0" y2="30" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.95" />
           <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id="kg-ribbon-green" x1="0" y1="330" x2="0" y2="60" gradientUnits="userSpaceOnUse">
+        <linearGradient id="sv-ribbon-green" x1="0" y1="330" x2="0" y2="60" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.9" />
           <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
         </linearGradient>
       </defs>
 
-      <rect width="1200" height="500" fill="url(#kg-glow)" />
+      <rect width="1200" height="500" fill="url(#sv-glow)" />
 
       {/* Rising sun of arcs behind the book. */}
       <g fill="none" strokeWidth="1.5">
@@ -92,11 +92,11 @@ export function BookIllustration({ className }: { className?: string }) {
 
       {/* Ribbons rising from the spine. */}
       <g fill="none" strokeLinecap="round">
-        <path d="M600 330 C 600 250, 520 236, 470 176 S 418 74, 470 34" stroke="url(#kg-ribbon)" strokeWidth="2.5" />
-        <path d="M600 330 C 612 244, 702 222, 742 162 S 792 84, 760 40" stroke="url(#kg-ribbon)" strokeWidth="2.5" />
-        <path d="M600 330 C 594 262, 604 200, 618 120" stroke="url(#kg-ribbon-green)" strokeWidth="2" strokeDasharray="3 9" />
-        <path d="M600 330 C 560 280, 420 280, 360 220" stroke="url(#kg-ribbon-green)" strokeWidth="1.6" strokeDasharray="2 8" />
-        <path d="M600 330 C 640 280, 780 286, 850 236" stroke="url(#kg-ribbon-green)" strokeWidth="1.6" strokeDasharray="2 8" />
+        <path d="M600 330 C 600 250, 520 236, 470 176 S 418 74, 470 34" stroke="url(#sv-ribbon)" strokeWidth="2.5" />
+        <path d="M600 330 C 612 244, 702 222, 742 162 S 792 84, 760 40" stroke="url(#sv-ribbon)" strokeWidth="2.5" />
+        <path d="M600 330 C 594 262, 604 200, 618 120" stroke="url(#sv-ribbon-green)" strokeWidth="2" strokeDasharray="3 9" />
+        <path d="M600 330 C 560 280, 420 280, 360 220" stroke="url(#sv-ribbon-green)" strokeWidth="1.6" strokeDasharray="2 8" />
+        <path d="M600 330 C 640 280, 780 286, 850 236" stroke="url(#sv-ribbon-green)" strokeWidth="1.6" strokeDasharray="2 8" />
       </g>
 
       {/* Letters and birds leaving the pages. */}

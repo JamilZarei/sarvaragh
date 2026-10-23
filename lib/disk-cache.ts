@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 /**
- * Small persistent cache under `node_modules/.cache/ketabgard/` (ignored by the
+ * Small persistent cache under `node_modules/.cache/sarvaragh/` (ignored by the
  * dev file watcher, so writes never trigger reloads). It keeps Open Library
  * responses and cover images across server restarts, which makes local
  * development and self-hosting fast after the first visit.
@@ -11,7 +11,7 @@ import path from "node:path";
  * On read-only hosts (serverless) every operation silently becomes a no-op.
  */
 
-const ROOT = process.env.KETABGARD_CACHE_DIR ?? path.join(/*turbopackIgnore: true*/ process.cwd(), "node_modules", ".cache", "ketabgard");
+const ROOT = process.env.SARVARAGH_CACHE_DIR ?? path.join(/*turbopackIgnore: true*/ process.cwd(), "node_modules", ".cache", "sarvaragh");
 let disabled = process.env.NODE_ENV === "test";
 
 export function cacheFile(namespace: string, key: string, ext: string): string {
